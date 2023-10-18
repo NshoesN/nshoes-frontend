@@ -24,11 +24,14 @@ ul, li, a{
     &:last-of-type {
         display: flex;
         flex-direction: row;
+        gap: 20px;
+        
         img {
             width: 14px;
         }
     }
 }
-.header-contaienr {
+.header-container {
     width: 100%;
+    padding: 0 23vw;
 }

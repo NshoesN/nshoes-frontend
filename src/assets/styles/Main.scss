@@ -1,0 +1,111 @@
+.MainContainer {
+    z-index: 1;
+}
+.MainFrame {
+    height: 30vw;
+    overflow: hidden;
+    position: relative;
+
+    .MainTextContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+
+        .buttonbox {
+            width: auto;
+            margin-top: 8vw;
+            display: flex;
+            gap: 3vw;
+            justify-content: center;
+
+            button {
+                width: 10vw;
+                height: 2.5vw;
+                font-size: 1vw;
+                cursor: pointer;
+                transition: all 0.5s;
+                border-radius: 15px;
+            }
+        }
+        h2 {
+            font-size: 3vw;
+        }
+        p {
+            font-size: 1.3vw;
+        }
+    }
+}
+.MainTop {
+    background-color: rgb(0, 0, 0);
+
+    img {
+        width: 80vw;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-30%,-53%);
+    }
+
+    .MainTextContainer {
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        color: white;
+
+        .buttonbox {
+            button {
+
+                color: white;
+                background-color: black;
+                border: solid 2px white;
+                &:hover {
+                    color: black;
+                    background-color: white;
+                    transition: all 0.5s;
+                }
+            }
+        }
+
+        
+    }
+    }
+.MainBottom {
+    background-color: rgb(255, 255, 255);
+
+    img {
+        width: 80vw;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(30%,-53%);
+    }
+
+    .MainTextContainer {
+        position: absolute;
+        left: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        color: black;
+
+        .buttonbox {
+            button {
+
+                color: black;
+                background-color: white;
+                border: solid 2px black;
+
+                &:hover {
+                    color: white;
+                    background-color: black;
+                    transition: all 0.5s;
+                }
+            }
+        }
+
+        
+    }
+    }
