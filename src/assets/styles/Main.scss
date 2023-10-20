@@ -1,5 +1,6 @@
 .MainContainer {
-    z-index: 1;
+    position: relative;
+    z-index: 0;
 }
 .MainFrame {
     height: 30vw;

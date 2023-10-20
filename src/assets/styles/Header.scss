@@ -3,6 +3,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0 18vw;
+    background-color: white;
 }
 .nav-item {
     a {
@@ -20,14 +22,91 @@
         
         img {
             width: 14px;
+            cursor: pointer;
         }
     }
 }
 .header-container {
     position: fixed;
-    right: 0;
-    top: 0;
     width: 100%;
-    height: auto;
-    padding: 0 23vw;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+}
+.SearchDropdown_Container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0 18vw;
+
+    .SearchTitle {
+        display: flex;
+        align-items: center;
+
+        p {
+            font-size: 3vw;
+        }
+
+        img {
+            width: 11vw;
+        }
+    }
+    .SearchBox {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        border: solid 1px #9C9C9C;
+        border-radius: 10px;
+        padding: 0 10px;
+        input {
+            width: 100%;
+        }
+        img {
+            width: 30px;
+            height:30px;
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 20px 0;
+        img {
+            width: 10px;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+        }
+    }
+}
+.CartDropdown_Container{
+    padding: 0 18vw;
+
+    p {
+        font-size: 30px;
+        margin: 10px 0;
+        text-align: left;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 30px 0;
+
+        li:first-child {
+            a {
+                font-size: 14px;
+                color: #818181;
+            }
+        }
+
+        a{
+            font-size: 12px;
+            color: black;
+
+        }
+    }
 }
