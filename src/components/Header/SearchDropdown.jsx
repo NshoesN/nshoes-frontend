@@ -5,7 +5,8 @@ import '../../assets/styles/Header.scss'
 import Logo from '../../assets/images/NshesLogo.png'
 import Search from '../../assets/icons/search_FILL0_wght400_GRAD0_opsz24.png'
 import Arrow from '../../assets/icons/iconoir_arrow-tr.png'
-function SearchDropdown() {
+
+function SearchDropdown(props) {
     return(
         <div className='SearchDropdown_Container'>
             <div className="SearchTitle">
@@ -13,10 +14,10 @@ function SearchDropdown() {
                 <img src={Logo} alt="logo" />
             </div>
             <div className="SearchBox">
-                <input type="text" />
+                <input type="text" id='SearchBox'/>
                 <img src={Search} alt="Search" />
             </div>
-            <ul>
+            <ul onClick={() => props.toggle()}>
                 <li><Link><img src={Arrow} alt="arrow" /><p>Air Force 1 '07 Low White</p></Link></li>
                 <li><Link><img src={Arrow} alt="arrow" /><p>Air Force 1 '07 Low White</p></Link></li>
                 <li><Link><img src={Arrow} alt="arrow" /><p>Air Force 1 '07 Low White</p></Link></li>

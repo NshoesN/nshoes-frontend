@@ -110,3 +110,15 @@
         }
     }
 }
+/* HeaderSearch.scss 또는 Dropdown 컴포넌트의 스타일 파일에 추가 */
+.dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    z-index: 1;
+  }
+  
+  .dropdown-menu.open {
+    max-height: 200px; /* 열릴 때의 높이 (원하는 높이로 조정) */
+    z-index: 1;
+  }

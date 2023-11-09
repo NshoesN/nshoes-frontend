@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 //style
 import '../assets/styles/Main.scss'
 //images

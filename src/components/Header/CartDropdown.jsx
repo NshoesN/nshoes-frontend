@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 //style
 import '../../assets/styles/Header.scss'
 
-function CartDropdown() {
+function CartDropdown(props) {
     return (
         <div className='CartDropdown_Container'>
             <p>Your bag is empty</p>
             <ul>
-                <li><Link>My Profile</Link></li>
-                <li><Link>Cart</Link></li>
-                <li><Link>Order</Link></li>
-                <li><Link to='/SignIn'>Sign In</Link></li>
-                <li><Link>Account</Link></li>
+                <li onClick={() => props.toggle()}><Link>My Profile</Link></li>
+                <li onClick={() => props.toggle()}><Link>Cart</Link></li>
+                <li onClick={() => props.toggle()}><Link>Order</Link></li>
+                <li onClick={() => props.toggle()}><Link to='/SignIn'>Sign In</Link></li>
+                <li onClick={() => props.toggle()}><Link>Account</Link></li>
             </ul>
         </div>
     )
