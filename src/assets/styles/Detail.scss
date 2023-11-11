@@ -5,7 +5,8 @@
 .detail_bg_container {
     display: flex;
     flex-flow: column nowrap;
-
+    gap: 10vh;
+    margin: 100px 0;
 }
 
 .center_row_flex {
@@ -51,7 +52,7 @@
 .shoes_imgs {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    gap: 8px;
 
     img {
         width: 4vw;
@@ -91,3 +92,8 @@
         cursor: pointer;
     }
 }
+button#buy:disabled, button#cart:disabled {
+    background-color: #d9d9d9;
+    border: none;
+  }
+  

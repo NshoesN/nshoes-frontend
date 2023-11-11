@@ -1,0 +1,16 @@
+{
+    "name":"parkchanyu",
+    "CartList":{
+        "1":{
+            "productId":10,
+            "size":270,
+            "price":139000
+        },
+        "2":{
+            "productId":11,
+            "size":285,
+            "price":139000
+        }
+    },
+    "TotalPrice":278000
+}

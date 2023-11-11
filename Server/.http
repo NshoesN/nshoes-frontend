@@ -1,0 +1,9 @@
+POST http://localhost:3001/user/register 
+# Headers
+Content-Type: application/json
+# Body
+{
+  "id": "test1",
+  "name": "테스트1",
+  "password": "qwer"
+}

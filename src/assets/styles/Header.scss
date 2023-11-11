@@ -68,16 +68,18 @@
     }
     ul {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-around;
         margin: 20px 0;
         img {
-            width: 10px;
+            width: 8vw;
+            border-radius: 20px;
         }
         a {
             display: flex;
             align-items: center;
-            font-size: 10px;
+            font-size: 16pt;
+            gap: 20px;
         }
     }
 }
@@ -119,6 +121,6 @@
   }
   
   .dropdown-menu.open {
-    max-height: 200px; /* 열릴 때의 높이 (원하는 높이로 조정) */
+    max-height: 1000px; /* 열릴 때의 높이 (원하는 높이로 조정) */
     z-index: 1;
   }
