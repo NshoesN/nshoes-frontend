@@ -21,8 +21,25 @@
         gap: 20px;
         
         img {
-            width: 14px;
+            width: 18px;
             cursor: pointer;
+        }
+        div {
+            position: relative;
+            cursor: pointer;
+        }
+        .cartCount {
+            position: absolute; /* 추가 */
+            bottom: 0; /* 추가 */
+            right: 0; /* 추가 */
+            transform: translate(30%, 30%);
+            width: 14px;
+            height: 14px;
+            line-height: 16px;
+            background-color: black;
+            border-radius: 50%;
+            font-size: 7pt;
+            color: white;
         }
     }
 }
@@ -48,7 +65,7 @@
         }
 
         img {
-            width: 11vw;
+            width: 13vw;
         }
     }
     .SearchBox {
@@ -72,7 +89,7 @@
         justify-content: space-around;
         margin: 20px 0;
         img {
-            width: 8vw;
+            width: 15vw;
             border-radius: 20px;
         }
         a {

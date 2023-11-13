@@ -10,10 +10,12 @@ import Shopping from "../../assets/icons/shopping.png";
 //component
 import HeaderSearch from "./SearchDropdown";
 import HeaderCart from "./CartDropdown";
+import axios from "axios";
 
 function Header() {
   const [isSearchVisible, setSearchVisible] = useState(false);
   const [isCartVisible, setCartVisible] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
 
   const toggleSearch = () => {
@@ -32,6 +34,43 @@ function Header() {
     setSearchVisible(false);
     setCartVisible(false);
   }, [location]);
+  useEffect(() => {
+  const token = window.sessionStorage.getItem("token");
+    if (token) {
+      axios
+        .get("http://localhost:3001/cart", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          let total = 0;
+          Object.values(response.data).forEach((item) => {
+            item.forEach((item) => {
+              total += item.quantity;
+            });
+            setCartCount(total);
+          });
+        });
+    } else {
+      let total = 0;
+  
+      let cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
+      if (cartItems) {
+        cartItems.forEach((item) => {
+          total += item.quantity;
+        });
+      }
+      
+      let cartItem = JSON.parse(window.localStorage.getItem('cartItem'));
+      if (cartItem) {
+        total += cartItem.quantity;
+      }
+  
+      setCartCount(total);
+    }
+  });
+  
 
   return (
     <nav className="header-container">
@@ -42,9 +81,7 @@ function Header() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link onClick={() => toggleSearch()} to>
-            Men
-          </Link>
+          <Link>Men</Link>
         </li>
         <li className="nav-item">
           <Link to="/Market">Market</Link>
@@ -57,7 +94,10 @@ function Header() {
         </li>
         <li className="nav-item">
           <img src={Search} alt="search" onClick={toggleSearch} />
-          <img src={Shopping} alt="shopping" onClick={toggleCart} />
+          <div onClick={toggleCart}>
+            <img src={Shopping} alt="shopping" />
+            {cartCount > 0 && <div className="cartCount">{cartCount}</div>}
+          </div>
         </li>
       </ul>
       <div className={`dropdown-menu ${isSearchVisible ? "open" : ""}`}>

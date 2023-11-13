@@ -14,8 +14,8 @@ function Main() {
                     <h2>Nike Air Force 1 '07 Low White</h2>
                     <p>pure white beauty</p>
                     <div className="buttonbox">
-                        <button><Link to='/Detail/10'>Learn more</Link></button>
-                        <button>Add Cart</button>
+                        <button><Link to='/Detail/1'>Learn more</Link></button>
+                        <button><Link to='/Detail/1'>Add Cart</Link></button>
                     </div>
                 </div>
             </div>
