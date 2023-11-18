@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import style from "../assets/styles/Market.module.scss";
+import style from "../../assets/styles/Market.module.scss";
 import axios from "axios";
-import Loading from '../components/Loading';
+import Loading from '../../components/Loading';
+
+export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
 
 function Market() {
   const [productsList, setProductsList] = useState([]);
@@ -10,7 +12,7 @@ function Market() {
   useEffect(() => {
     const token = window.sessionStorage.getItem("token");
     axios
-      .get("http://localhost:3001/products", {
+      .get(`${backend}products`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -2,10 +2,44 @@
     display: flex;
     flex-flow: column nowrap;
 }
+
 .cart_container {
     display: flex;
     flex-flow: column nowrap;
 }
+
+.cart_item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    img {
+        width: 300px;
+    }
+
+    div {
+        height: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 5px;
+        align-items: center;
+        font-size: 30px;
+
+        .both {
+            display: flex;
+            flex-flow: row nowrap;
+            font-size: 16px;
+            font-weight: 700;
+            color: #117EFE;
+            gap: 20px;
+            p {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
 hr {
     width: 100%;
     border: 0.5px solid #000000;

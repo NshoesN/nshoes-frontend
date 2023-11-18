@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 //style
-import "../assets/styles/Auth.scss";
+import "../../assets/styles/Auth.scss";
 import { useNavigate } from "react-router-dom";
 //assets
+
+export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
 
 function SignUp() {
   const [nameValue, setNameValue] = useState("");
@@ -35,7 +37,7 @@ function SignUp() {
     }
   };  
   const toggle_submit = () => {
-    axios.post('http://localhost:3001/register', {
+    axios.post(`${backend}register`, {
       "name": nameValue,
       "email": emailValue,
       "password": passwdValue

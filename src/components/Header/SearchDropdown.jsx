@@ -6,6 +6,8 @@ import Search from "../../assets/icons/search_FILL0_wght400_GRAD0_opsz24.png";
 import axios from "axios";
 import LoadingIndicator from "../Loading";
 
+export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
+
 function SearchDropdown(props) {
   const [userInput, setUserInput] = useState("");
   const [dataList, setDataList] = useState([]);
@@ -13,7 +15,7 @@ function SearchDropdown(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/products", {
+      .get(`${backend}products`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

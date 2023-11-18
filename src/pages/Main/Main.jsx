@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 //style
-import '../assets/styles/Main.scss'
+import '../../assets/styles/Main.scss'
 //images
-import MainTop_1 from '../assets/images/MainTop_1.png'
-import MainTop_2 from '../assets/images/MainTop_2.webp'
+import MainTop_1 from '../../assets/images/MainTop_1.png'
+import MainTop_2 from '../../assets/images/MainTop_2.webp'
 
 function Main() {
     return (

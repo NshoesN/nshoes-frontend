@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 //style
-import "../assets/styles/Auth.scss";
+import "../../assets/styles/Auth.scss";
 //assets
-import Logo from "../assets/images/NshesLogo.png";
-import arrow from "../assets/icons/emojione-monotone_right-arrow.png";
+import Logo from "../../assets/images/NshesLogo.png";
+import arrow from "../../assets/icons/emojione-monotone_right-arrow.png";
 import axios from "axios";
+
+export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
 
 function SignIn() {
   const [idValue, setId] = useState("");
@@ -39,7 +41,7 @@ function SignIn() {
   };
   const signSubmit = () => {
     axios
-      .post("http://localhost:3001/login", {
+      .post(`${backend}login`, {
         email: idValue,
         password: pwValue,
       })

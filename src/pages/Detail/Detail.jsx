@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // 추가
 //style
-import "../assets/styles/Detail.scss";
+import "../../assets/styles/Detail.scss";
 import axios from "axios";
+import CartContext from "../../context/CartContext";
+
+export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
 
 const Detail = () => {
+  const {updateCartCount} = useContext(CartContext)
   const navigate = useNavigate(); // 추가
   const token = window.sessionStorage.getItem("token");
   const params = useParams();
@@ -14,7 +18,7 @@ const Detail = () => {
   const productId = params.productId;
   const [mainImg, setMainImg] = useState('');
   useEffect(() => {
-    axios.get(`http://localhost:3001/products/${productId}`)
+    axios.get(`${backend}products/${productId}`)
     .then (
       response => {
         setProduct(response.data)
@@ -48,18 +52,26 @@ const Detail = () => {
   }
   const addCart = () => {
     if (token) {
-      axios.post('http://localhost:3001/cart', productInfo, {
+      axios.post(`${backend}cart`, productInfo, {
         headers: {
           'Authorization':`Bearer ${token}`
         },
       })
       .then(() => {
         navigate('/cart');
+        updateCartCount()
       })
     }
     else {
+      let locallist = {
+        'product_id':product.Id,
+        'product_name':product.Name,
+        'price':product.Price,
+        'quantity':1,
+        'size':shoesSize
+      }
       let cartItems = JSON.parse(window.localStorage.getItem('cartItems')) || [];
-      cartItems.push(productInfo);
+      cartItems.push(locallist);
       window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
       navigate('/cart');
     }
