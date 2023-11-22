@@ -4,10 +4,11 @@ import { useState } from "react";
 import "../../assets/styles/Auth.scss";
 //assets
 import Logo from "../../assets/images/NshesLogo.png";
-import arrow from "../../assets/icons/emojione-monotone_right-arrow.png";
+import arrowBK from "../../assets/icons/right-errowBK.png";
 import axios from "axios";
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
+export const backend =
+  "https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/";
 
 function SignIn() {
   const [idValue, setId] = useState("");
@@ -23,23 +24,25 @@ function SignIn() {
     return pwValue !== "";
   };
 
-  const togglePw = () => {
+  const togglePw = (e) => {
+    e.preventDefault();
     setPwAct(!pwAct);
   };
 
   const isfilled = (e) => {
     const newValue = e.target.value;
     setId(newValue);
-
+  
     if (newValue === "") {
       setPwAct(false);
       setPw("");
     }
     if (e.key === "Enter") {
-      togglePw();
+      togglePw(e); // 이벤트 객체 e를 전달
     }
   };
-  const signSubmit = () => {
+  const signSubmit = (e) => {
+    e.preventDefault();
     axios
       .post(`${backend}login`, {
         email: idValue,
@@ -47,13 +50,13 @@ function SignIn() {
       })
       .then((response) => {
         console.log(response.data);
-        window.alert("로그인에 성공했습니다!"); // 알림 표시
-        window.sessionStorage.setItem('token', response.data.token); // 토큰 저장
+        window.alert("로그인에 성공했습니다!");
+        window.sessionStorage.setItem("token", response.data.token);
         navigate("/");
       })
       .catch((err) => {
         console.error(err);
-        window.alert("로그인에 실패했습니다"); // 오류 알림 표시
+        window.alert("로그인에 실패했습니다");
       });
   };
 
@@ -66,26 +69,36 @@ function SignIn() {
           <img src={Logo} alt="logo" />
         </div>
         <div className="InputLayout">
-          <input
-            type="mail"
-            placeholder="Enter your Email"
-            value={idValue}
-            onChange={isfilled}
-            onKeyDown={isfilled}
-          />
-          {idCheck() && (
-            <img src={arrow} alt="arrow" onClick={() => togglePw()} />
-          )}
+          <form onSubmit={togglePw}>
+            <input
+              type="mail"
+              placeholder="Enter your Email"
+              value={idValue}
+              onChange={isfilled}
+              onKeyDown={isfilled}
+            />
+            {idCheck() && !pwAct && (
+              <button type="submit">
+              <img src={arrowBK} alt="arrow" />
+              </button>
+            )}
+          </form>
         </div>
         {pwAct && (
           <div className="InputLayout">
-            <input
-              type="password"
-              placeholder="Enter your Password"
-              value={pwValue}
-              onChange={(e) => setPw(e.target.value)}
-            />
-            {pwCheck() && <img src={arrow} alt="arrow" onClick={signSubmit} />}
+            <form onSubmit={signSubmit}>
+              <input
+                type="password"
+                placeholder="Enter your Password"
+                value={pwValue}
+                onChange={(e) => setPw(e.target.value)}
+              />
+              {pwCheck() && (
+                <button type="submit">
+                  <img src={arrowBK} alt="arrow" />
+                </button>
+              )}
+            </form>
           </div>
         )}
         <Link to="/SignUp">

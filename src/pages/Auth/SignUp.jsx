@@ -19,7 +19,6 @@ function SignUp() {
     const newcheck = e.target.value;
     setPasswdcheckValue(newcheck);
 
-    // 비밀번호 확인과 비밀번호를 비교하여 sameCheck 업데이트
     if (passwdValue === newcheck) {
       setSameCheck(true);
     } else {
@@ -44,12 +43,12 @@ function SignUp() {
     })
     .then(response => {
       console.log(response.data);
-      window.alert('회원가입에 성공했습니다!');  // 알림 표시
-      navigate("/Signin");  // 요청이 성공적으로 완료된 후에 페이지 이동
+      window.alert('회원가입에 성공했습니다!');
+      navigate("/Signin");
     })
     .catch(err => {
       console.error(err);
-      window.alert('회원가입에 실패했습니다');  // 오류 알림 표시
+      window.alert('회원가입에 실패했습니다'); 
     });
   };
   
@@ -99,7 +98,7 @@ function SignUp() {
             onChange={pswdcheck}
           />
         </div>
-        <button type="submit" onClick={toggle_submit}>
+        <button type="submit" onClick={toggle_submit} id="button">
           Create Account
         </button>
       </div>
