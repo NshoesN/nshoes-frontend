@@ -65,7 +65,7 @@ const Cart = () => {
     const token = window.sessionStorage.getItem("token");
     if (token) {
     axios
-      .delete(`${backend}${itemId}`, {
+      .delete(`${backend}cart/${itemId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
