@@ -27,8 +27,7 @@
         }
 
         img {
-            width: 75px;
-            height: 40px;
+            width: 140px;
         }
     }
     .InputLayout {
@@ -48,12 +47,21 @@
             width: 30px;
             cursor: pointer;
         }
+        form {
+            display: flex;
+            width: 100%;
+
+        }
+        button {
+            border: 0;
+            align-self: flex-end;
+        }
     }
     a > p {
         font-size: 10pt;
         color: #117EFE;
     }
-    button {
+    #button {
         width: 167px;
         height: 44px;
         color: white;
