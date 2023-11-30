@@ -7,9 +7,6 @@ import Logo from "../../assets/images/NshesLogo.png";
 import arrowBK from "../../assets/icons/right-errowBK.png";
 import axios from "axios";
 
-export const backend =
-  "https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/";
-
 function SignIn() {
   const [idValue, setId] = useState("");
   const [pwValue, setPw] = useState("");
@@ -44,12 +41,11 @@ function SignIn() {
   const signSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${backend}login`, {
+      .post(`${process.env.REACT_APP_BACKEND}login`, {
         email: idValue,
         password: pwValue,
       })
       .then((response) => {
-        console.log(response.data);
         window.alert("로그인에 성공했습니다!");
         window.sessionStorage.setItem("token", response.data.token);
         navigate("/");

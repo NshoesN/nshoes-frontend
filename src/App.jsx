@@ -15,7 +15,6 @@ import Account from "./pages/Account/Account";
 import CartContext from "./context/CartContext";
 import axios from "axios";
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
 function App() {
   const token = sessionStorage.getItem("token");
   const [cartCount, setCartCount] = useState(0);
@@ -23,7 +22,7 @@ function App() {
   const updateCartCount = useCallback(() => {
     if (token) {
       axios
-        .get(`${backend}cart`, {
+        .get(`${process.env.REACT_APP_BACKEND}cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

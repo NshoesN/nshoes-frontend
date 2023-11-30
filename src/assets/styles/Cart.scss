@@ -44,3 +44,11 @@ hr {
     width: 100%;
     border: 0.5px solid #000000;
 }
+@media (max-width: 800px) {
+    .cart_bg {
+        padding-top: 37.5px;
+    }
+    .padding {
+        padding: 37.5px 4vw;
+    }
+}

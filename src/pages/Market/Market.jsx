@@ -4,15 +4,13 @@ import style from "../../assets/styles/Market.module.scss";
 import axios from "axios";
 import Loading from '../../components/Loading';
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
-
 function Market() {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     const token = window.sessionStorage.getItem("token");
     axios
-      .get(`${backend}products`, {
+      .get(`${process.env.REACT_APP_BACKEND}products`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

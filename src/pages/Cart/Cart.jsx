@@ -17,13 +17,13 @@ const Cart = () => {
   useEffect(() => {
     const token = window.sessionStorage.getItem("token");
 
-    axios.get(`${backend}products`).then((response) => {
+    axios.get(`${process.env.REACT_APP_BACKEND}products`).then((response) => {
       setProductList(response.data);
     });
 
     if (token) {
       axios
-        .get(`${backend}cart`, {
+        .get(`${process.env.REACT_APP_BACKEND}cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -65,14 +65,14 @@ const Cart = () => {
     const token = window.sessionStorage.getItem("token");
     if (token) {
     axios
-      .delete(`${backend}cart/${itemId}`, {
+      .delete(`${process.env.REACT_APP_BACKEND}cart/${itemId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
         axios
-          .get(`${backend}cart`, {
+          .get(`${process.env.REACT_APP_BACKEND}cart`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -141,6 +141,7 @@ const Cart = () => {
         {showList()}
         <hr />
       </div>
+      
     </div>
   );
 };

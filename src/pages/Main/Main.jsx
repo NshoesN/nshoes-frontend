@@ -5,7 +5,7 @@ import '../../assets/styles/Main.scss'
 import MainTop_1 from '../../assets/images/MainTop_1.png'
 import MainTop_2 from '../../assets/images/MainTop_2.webp'
 
-function Main() {
+function Main(pre) {
     return (
         <div className='MainContainer'>
             <div className="MainTop MainFrame">

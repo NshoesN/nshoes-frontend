@@ -1,16 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // 추가
+import { useNavigate } from "react-router-dom";
 //style
 import "../../assets/styles/Detail.scss";
 import axios from "axios";
 import CartContext from "../../context/CartContext";
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
-
 const Detail = () => {
   const {updateCartCount} = useContext(CartContext)
-  const navigate = useNavigate(); // 추가
+  const navigate = useNavigate();
   const token = window.sessionStorage.getItem("token");
   const params = useParams();
   const [shoesSize, setShoesSize] = useState();
@@ -18,7 +16,7 @@ const Detail = () => {
   const productId = params.productId;
   const [mainImg, setMainImg] = useState('');
   useEffect(() => {
-    axios.get(`${backend}products/${productId}`)
+    axios.get(`${process.env.REACT_APP_BACKEND}products/${productId}`)
     .then (
       response => {
         setProduct(response.data)
@@ -29,7 +27,7 @@ const Detail = () => {
   const Topimg = (i) => {
     setMainImg(product.images[i]);
   };
-  const sizeOptions = Array.from({length: 17}, (_, i) => 240 + i * 5).map((size, index) => {
+  const sizeOptions = Array.from({length: 15}, (_, i) => 240 + i * 5).map((size, index) => {
     const isSelected = shoesSize === size;
     const style = isSelected ? { border: "1px solid #000000" } : {};
   
@@ -52,7 +50,7 @@ const Detail = () => {
   }
   const addCart = () => {
     if (token) {
-      axios.post(`${backend}cart`, productInfo, {
+      axios.post(`${process.env.REACT_APP_BACKEND}cart`, productInfo, {
         headers: {
           'Authorization':`Bearer ${token}`
         },

@@ -97,3 +97,33 @@ button#buy:disabled, button#cart:disabled {
     border: none;
   }
   
+  @media (max-width: 800px) {
+    .detail_bg {
+        padding: 0 5vw;
+    }
+    .center_row_flex {
+        display: flex;
+        flex-flow: column nowrap;
+        img {
+            width: 100%;
+        }
+        p {
+            font-size: 30px;
+        }
+    }
+    .size_options {
+        width: 100%;
+        height: auto;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+
+        div {
+            font-size: 1rem;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+  }

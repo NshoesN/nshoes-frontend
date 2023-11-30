@@ -6,8 +6,6 @@ import Search from "../../assets/icons/search_FILL0_wght400_GRAD0_opsz24.png";
 import axios from "axios";
 import LoadingIndicator from "../Loading";
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
-
 function SearchDropdown(props) {
   const [userInput, setUserInput] = useState("");
   const [dataList, setDataList] = useState([]);
@@ -15,13 +13,16 @@ function SearchDropdown(props) {
 
   useEffect(() => {
     axios
-      .get(`${backend}products`, {
+      .get(`${process.env.REACT_APP_BACKEND}products`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
-        const dataWithLoadingState = response.data.map(item => ({ ...item, isLoading: true }));
+        const dataWithLoadingState = response.data.map((item) => ({
+          ...item,
+          isLoading: true,
+        }));
         setDataList(dataWithLoadingState);
       })
       .catch((err) => {
@@ -33,13 +34,18 @@ function SearchDropdown(props) {
     setUserInput(e.target.value.toLowerCase());
   };
 
-  const results = !userInput
-    ? [] // 검색어가 없을 때는 빈 배열을 반환
+  const data = !userInput
+    ? []
     : dataList.filter((data) => data.Name.toLowerCase().includes(userInput));
 
   const handleImageLoad = (id) => {
-    setDataList(prevDataList => prevDataList.map(item => item.Id === id ? { ...item, isLoading: false } : item));
-  }
+    setDataList((prevDataList) =>
+      prevDataList.map((item) =>
+        item.Id === id ? { ...item, isLoading: false } : item
+      )
+    );
+  };
+  const results = data.slice(0, 5);
 
   return (
     <div className="SearchDropdown_Container">
@@ -51,7 +57,7 @@ function SearchDropdown(props) {
         <input type="text" id="SearchBox" onChange={getValue} />
         <img src={Search} alt="Search" />
       </div>
-      <ul onClick={() => props.toggle()}>
+      <ul onClick={() => {props.toggle(); props.toggleScrim()}}>
         {results.map((item) => (
           <li key={item.Id}>
             <Link to={`/detail/${item.Id}`}>
@@ -60,12 +66,12 @@ function SearchDropdown(props) {
                 src={item.MainImgURL}
                 alt=""
                 onLoad={() => handleImageLoad(item.Id)}
-                style={{display: item.isLoading ? 'none' : 'block'}}
+                style={{ display: item.isLoading ? "none" : "block" }}
               />
               {!item.isLoading && (
                 <>
                   <p>{item.Name}</p>
-                  <p>{item.Price}</p>
+                  <p>{item.Price.toLocaleString()} KRW</p>
                 </>
               )}
             </Link>

@@ -5,8 +5,6 @@ import "../../assets/styles/Auth.scss";
 import { useNavigate } from "react-router-dom";
 //assets
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
-
 function SignUp() {
   const [nameValue, setNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
@@ -36,7 +34,7 @@ function SignUp() {
     }
   };  
   const toggle_submit = () => {
-    axios.post(`${backend}register`, {
+    axios.post(`${process.env.REACT_APP_BACKEND}register`, {
       "name": nameValue,
       "email": emailValue,
       "password": passwdValue

@@ -4,8 +4,6 @@ import axios from 'axios';
 import '../../assets/styles/Account.scss'
 import { useNavigate } from 'react-router-dom';
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
-
 const Account = () => {
     const [userInfo, setUserInfo] = useState(null);
     const [updatedInfo, setUpdatedInfo] = useState({name: '', email: '', password: ''});
@@ -14,7 +12,7 @@ const Account = () => {
 
     useEffect(() => {
         if(token) {
-            axios.get(`${backend}userinfo`, {
+            axios.get(`${process.env.REACT_APP_BACKEND}userinfo`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -34,7 +32,7 @@ const Account = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`${backend}users/` + userInfo.id, updatedInfo, {
+        axios.put(`${process.env.REACT_APP_BACKEND}users/` + userInfo.id, updatedInfo, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
