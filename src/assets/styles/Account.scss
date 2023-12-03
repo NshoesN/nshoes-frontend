@@ -1,8 +1,47 @@
 .account_bg {
     display: flex;
+    padding: 37.5px 18vw;
+    width: 100vw;
+    height: calc(100vh - 37.5px);
     flex-flow: column nowrap;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+
+    div {
+        width: 50vh;
+        gap: 10px;
+    }
+
+    h2 {
+        font-size: 50px;
+    }
+    p {
+        font-size: 30px;
+    }
 }
-button {
-    border: 1px solid black;
+
+.account_container {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 50px;
+
+    label {
+        font-size: 30px;
+    }
+
+    input {
+        width: 100%;
+        border-bottom: 1px solid #D9D9D9;
+    }
+
+    button {
+        width: 50vh;
+        height: 50px;
+        font-size: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
 }

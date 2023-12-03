@@ -42,6 +42,7 @@
 
 .MainTop {
     background-color: rgb(0, 0, 0);
+    height: 80vh;
 
     img {
         width: 80vw;
@@ -80,6 +81,7 @@
 
 .MainBottom {
     background-color: rgb(255, 255, 255);
+    height: 80vh;
 
     img {
         width: 80vw;
@@ -176,7 +178,7 @@
         img {
             position: static;
             width: 100vw;
-            transform: translate(0, 0);
+            transform: translate(0,);
         }
     }
 }

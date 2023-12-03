@@ -8,7 +8,6 @@ import "../../assets/styles/Header.scss";
 import Logo from "../../assets/images/NshesLogo.png";
 import Search from "../../assets/icons/Search.png";
 import SearchMobile from "../../assets/icons/search-mobile.png";
-import SearchWhite from "../../assets/icons/whiteSearch.png"
 import Shopping from "../../assets/icons/shopping.png";
 import Burger from "../../assets/icons/hamburger.png";
 //component
@@ -22,7 +21,6 @@ function Header(props) {
   const [isSearchVisible, setSearchVisible] = useState(false);
   const [isCartVisible, setCartVisible] = useState(false);
   const [isInfoOpen, setInfoOpen] = useState(false);
-  const [isSearchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -36,7 +34,7 @@ function Header(props) {
   }
 
   const toggleSearch = () => {
-    if (isCartVisible === false) {
+    if (isCartVisible === false || isCartVisible === undefined) {
       props.toggleScrim();
     }
     setSearchVisible(!isSearchVisible);
@@ -51,10 +49,10 @@ function Header(props) {
   };
 
   const toggleCart = () => {
-    setCartVisible(!isCartVisible);
-    if (isSearchVisible === false) {
+    if (isSearchVisible === false || isSearchVisible === undefined) {
       props.toggleScrim();
     }
+    setCartVisible(!isCartVisible);
     if (isSearchVisible === true) {
       setSearchVisible(!isSearchVisible);
     }
@@ -72,8 +70,8 @@ function Header(props) {
   }
 
   useEffect(() => {
-    setSearchVisible(false);
-    setCartVisible(false);
+    setSearchVisible(undefined);
+    setCartVisible(undefined);
   }, [location]);
 
   const Infoselect = () => {
@@ -90,20 +88,9 @@ function Header(props) {
           <Link to='/Market'>Market</Link>
         </li>
         <li onClick={toggleInfo}>
-          <Link>New Releases</Link>
+          <Link to='/New'>Show Room</Link>
         </li>
       </ul>
-    </div>
-  )
-}
-
-const Searchselect = () => {
-  return (
-    <div className="search-bg">
-      <div>
-        <img src={SearchWhite} alt="search" />
-        <input type="text" />
-      </div>
     </div>
   )
 }
@@ -118,13 +105,13 @@ const Searchselect = () => {
                   <img src={Logo} alt="logo" id="Logo" />
               </li>
               <li className="nav-item">
-                <Link>Men</Link>
-              </li>
-              <li className="nav-item">
                 <Link to="/Market">Market</Link>
               </li>
               <li className="nav-item">
-                <Link to>New Releases</Link>
+                <Link to="/New">Show Room</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/New">New Releases</Link>
               </li>
               <li className="nav-item">
                 <Link to>SNKRS</Link>
@@ -140,12 +127,12 @@ const Searchselect = () => {
               </li>
             </ul>
             <div
-              className={`dropdown-menu ${isSearchVisible ? "open" : "close"}`}
+              className={`dropdown-menu ${isSearchVisible === undefined ? "" : isSearchVisible ? "open" : "close"}`}
             >
               <HeaderSearch toggle={toggleSearch} className="content" toggleScrim={props.toggleScrim} />
             </div>
             <div
-              className={`dropdown-menu ${isCartVisible ? "open" : "close"}`}
+              className={`dropdown-menu ${isCartVisible === undefined ? "" : isCartVisible ? "open" : "close"}`}
             >
               <HeaderCart toggle={toggleSearch} className="content" toggleScrim={props.toggleScrim} />
             </div>

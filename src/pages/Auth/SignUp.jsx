@@ -40,9 +40,7 @@ function SignUp() {
       "password": passwdValue
     })
     .then(response => {
-      console.log(response.data);
-      window.alert('회원가입에 성공했습니다!');
-      navigate("/Signin");
+      navigate("/Success");
     })
     .catch(err => {
       console.error(err);

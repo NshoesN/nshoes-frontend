@@ -25,10 +25,12 @@ function Main(pre) {
                     <h2>Nike Air Force 1 '07 Low Black</h2>
                     <p>pure black beauty</p>
                     <div className="buttonbox">
-                        <button><Link to='/Detail/11'>Learn more</Link></button>
-                        <button>Add Cart</button>
+                        <button><Link to='/Detail/2'>Learn more</Link></button>
+                        <button><Link to='/Detail/2'>Add Cart</Link>t</button>
                     </div>
                 </div>
+            </div>
+            <div>
             </div>
         </div>
     )

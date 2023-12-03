@@ -13,6 +13,8 @@ import Market from "./pages/Market/Market";
 import Detail from "./pages/Detail/Detail";
 import Account from "./pages/Account/Account";
 import CartContext from "./context/CartContext";
+import New from "./pages/New";
+import SignUpSuccess from "./pages/Success/signup";
 import axios from "axios";
 
 function App() {
@@ -36,8 +38,7 @@ function App() {
             setCartCount(total);
           });
         });
-    }
-    else {
+    } else {
       let storageObject = {};
 
       for (let i = 0; i < localStorage.length; i++) {
@@ -51,11 +52,11 @@ function App() {
         item.forEach((item) => {
           total += item.quantity;
         });
-        setCartCount(total)
+        setCartCount(total);
       });
     }
   }, [token]);
-  
+
   useEffect(() => {
     updateCartCount();
   }, [updateCartCount]);
@@ -70,6 +71,8 @@ function App() {
             <Route path="/Cart" element={<Cart />}></Route>
             <Route path="/Market" element={<Market />}></Route>
             <Route path="/Account" element={<Account />}></Route>
+            <Route path="/New" element={<New />}></Route>
+            <Route path="/Success" element={<SignUpSuccess />}></Route>
             <Route path="/Detail/:productId" element={<Detail />}></Route>
             <Route path="/*" element={<NotFound />}></Route>
           </Routes>

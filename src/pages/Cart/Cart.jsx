@@ -3,13 +3,15 @@ import { useContext, useEffect, useState } from "react";
 
 //style
 import "../../assets/styles/Cart.scss";
+import "../../assets/styles/Flex.scss";
 import axios from "axios";
 import CartContext from "../../context/CartContext";
 
-export const backend = 'https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/'
+export const backend =
+  "https://port-0-nshoes-backend-1igmo82clotxbvvk.sel5.cloudtype.app/";
 
 const Cart = () => {
-  const {updateCartCount} = useContext(CartContext)
+  const { updateCartCount } = useContext(CartContext);
   const [cartList, setCartList] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
   const [productList, setProductList] = useState();
@@ -60,44 +62,42 @@ const Cart = () => {
       });
     }
   }, []);
-  
+
   const deleteItem = (itemId) => {
     const token = window.sessionStorage.getItem("token");
     if (token) {
-    axios
-      .delete(`${process.env.REACT_APP_BACKEND}cart/${itemId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        axios
-          .get(`${process.env.REACT_APP_BACKEND}cart`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then((response) => {
-            setCartList(response.data);
-            let total = 0;
-            Object.values(response.data).forEach((item) => {
-              item.forEach((item) => {
-                total += item.price * item.quantity;
+      axios
+        .delete(`${process.env.REACT_APP_BACKEND}cart/${itemId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          axios
+            .get(`${process.env.REACT_APP_BACKEND}cart`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then((response) => {
+              setCartList(response.data);
+              let total = 0;
+              Object.values(response.data).forEach((item) => {
+                item.forEach((item) => {
+                  total += item.price * item.quantity;
+                });
+                setTotalPrice(total.toLocaleString());
               });
-              setTotalPrice(total.toLocaleString());
+              updateCartCount();
+            })
+            .catch((err) => {
+              console.error(err);
             });
-            updateCartCount();
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
-    else {
-
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
     }
   };
   const showList = () => {
@@ -114,10 +114,10 @@ const Cart = () => {
               return (
                 <div key={index} className="cart_item">
                   <img src={product?.MainImgURL} alt="" />
-                  <div>
+                  <div className="check">
                     <p>{item.product_name}</p>
-                    <p>size: {item.size}</p>
                     <p>count: {item.quantity}</p>
+                    <p>size: {item.size}</p>
                     <p>₩ {item.price.toLocaleString()}</p>
                     <div className="both">
                       <p>More Info</p>
@@ -140,8 +140,8 @@ const Cart = () => {
         <hr />
         {showList()}
         <hr />
+        <button>Order</button>
       </div>
-      
     </div>
   );
 };
