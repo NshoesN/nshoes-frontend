@@ -10,9 +10,7 @@ const CartProviderComponent = ({ children }) => {
   const updateCartCount = useCallback(() => {
     if (isLoggedIn) {
       axios
-        .get(`${process.env.REACT_APP_BACKEND}cart`, {
-          withCredentials: true,
-        })
+        .get(`${process.env.REACT_APP_BACKEND}cart`)
         .then((response) => {
           let total = 0;
           Object.values(response.data).forEach((item) => {

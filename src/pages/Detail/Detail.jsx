@@ -12,17 +12,15 @@ const Detail = () => {
   const token = window.sessionStorage.getItem("token");
   const params = useParams();
   const [shoesSize, setShoesSize] = useState();
-  const [product, setProduct] = useState({ images: [] }); // 이름 변경과 초기값 설정
+  const [product, setProduct] = useState({ images: [] });
   const productId = params.productId;
   const [mainImg, setMainImg] = useState("");
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND}products/${productId}`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_BACKEND}products/${productId}`)
       .then((response) => {
         setProduct(response.data);
-        setMainImg(response.data.images[0]); // 메인 이미지 설정
+        setMainImg(response.data.images[0]);
       });
   }, [productId]);
   const Topimg = (i) => {

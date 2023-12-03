@@ -20,9 +20,7 @@ const Cart = () => {
     const token = window.sessionStorage.getItem("token");
 
     axios
-      .get(`${process.env.REACT_APP_BACKEND}products`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_BACKEND}products`)
       .then((response) => {
         setProductList(response.data);
       });
@@ -114,7 +112,6 @@ const Cart = () => {
               const product = productList.find(
                 (productItem) => productItem.Id === item.product_id
               );
-              console.log(item);
               return (
                 <div key={index} className="cart_item">
                   <img src={product?.MainImgURL} alt="" />

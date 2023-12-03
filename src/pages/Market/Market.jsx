@@ -16,7 +16,6 @@ function Market() {
         },
       })
       .then((response) => {
-        // 이미지 프리로딩 시작
         const images = response.data.map((item) => {
           const img = new Image();
           img.src = item.MainImgURL;
@@ -25,7 +24,6 @@ function Market() {
           });
         });
 
-        // 모든 이미지가 로딩되면 상품 목록 설정 및 로딩 상태 업데이트
         Promise.all(images).then(() => {
           setProductsList(response.data);
           setLoading(false);

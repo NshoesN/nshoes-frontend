@@ -15,7 +15,7 @@ export default function Footer() {
         </li>
         <li>X</li>
         <li>
-          <p>권성민</p>
+          <p>SM</p>
         </li>
       </ul>
     </div>
