@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../../assets/styles/Detail.scss";
 import axios from "axios";
 import CartContext from "../../context/CartContext";
+import { PC, Mobile } from "../../components/Layout/Responsive";
 
 const Detail = () => {
   const { updateCartCount } = useContext(CartContext);
@@ -17,8 +18,7 @@ const Detail = () => {
   const [mainImg, setMainImg] = useState("");
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND}products/${productId}`,
-      {
+      .get(`${process.env.REACT_APP_BACKEND}products/${productId}`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -51,14 +51,18 @@ const Detail = () => {
   const addCart = () => {
     if (token) {
       axios
-        .post(`${process.env.REACT_APP_BACKEND}cart`, productInfo, {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        .post(
+          `${process.env.REACT_APP_BACKEND}cart`,
+          productInfo,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        },
-        {
-          withCredentials: true,
-        })
+          {
+            withCredentials: true,
+          }
+        )
         .then(() => {
           navigate("/cart");
           updateCartCount();
@@ -107,12 +111,20 @@ const Detail = () => {
               <p className="font" id="price">
                 {product.Price} KRW
               </p>
-              <button id="buy" disabled={!shoesSize}>
-                Buy
-              </button>
-              <button id="cart" onClick={addCart} disabled={!shoesSize}>
-                Add To Cart
-              </button>
+              <PC>
+                <button id="buy" disabled={!shoesSize}>
+                  Buy
+                </button>
+                <button id="cart" onClick={addCart} disabled={!shoesSize}>
+                  Add To Cart
+                </button>
+              </PC>
+              <Mobile>
+                <div className="button">
+                  <button id="buy" disabled={!shoesSize}>Buy</button>
+                  <button id="cart" onClick={addCart} disabled={!shoesSize}>Add to Cart</button>
+                </div>
+              </Mobile>
             </div>
           </div>
         </div>

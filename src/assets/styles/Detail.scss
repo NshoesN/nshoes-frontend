@@ -126,4 +126,29 @@ button#buy:disabled, button#cart:disabled {
             align-items: center;
         }
     }
+    .button {
+        width: 100%;
+        padding-top: 30px;
+        height: 100px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        background-color: white;
+        border-top: 1px solid black;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+
+        #buy {
+            width: 40%;
+            height: 50px;
+        }
+        #cart {
+            width: 40%;
+            height: 50px;
+            background-color: white;
+        }
+    }
   }
