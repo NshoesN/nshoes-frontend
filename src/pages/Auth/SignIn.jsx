@@ -44,6 +44,9 @@ function SignIn() {
       .post(`${process.env.REACT_APP_BACKEND}login`, {
         email: idValue,
         password: pwValue,
+      },
+      {
+        withCredentials: true,
       })
       .then((response) => {
         window.alert("로그인에 성공했습니다!");

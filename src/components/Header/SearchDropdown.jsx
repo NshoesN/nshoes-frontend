@@ -17,6 +17,10 @@ function SearchDropdown(props) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        
+      },
+      {
+        withCredentials: true,
       })
       .then((response) => {
         const dataWithLoadingState = response.data.map((item) => ({

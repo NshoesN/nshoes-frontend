@@ -41,6 +41,9 @@ function SignUp() {
           name: nameValue,
           email: emailValue,
           password: passwdValue,
+        },
+        {
+          withCredentials: true,
         }
       )
       .then((response) => {

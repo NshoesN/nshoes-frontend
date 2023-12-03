@@ -14,6 +14,9 @@ function Market() {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+      },
+      {
+        withCredentials: true,
       })
       .then((response) => {
         const images = response.data.map((item) => {

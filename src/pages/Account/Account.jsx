@@ -22,7 +22,10 @@ const Account = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        })
+        },
+        {
+            withCredentials: true,
+          })
         .then((response) => {
           setUserInfo(response.data);
         })
@@ -46,7 +49,10 @@ const Account = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
+        {
+            withCredentials: true,
+          }
       )
       .then((response) => {
         setUserInfo(response.data);

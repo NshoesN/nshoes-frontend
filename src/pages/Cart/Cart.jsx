@@ -20,7 +20,10 @@ const Cart = () => {
     const token = window.sessionStorage.getItem("token");
 
     axios
-      .get(`${process.env.REACT_APP_BACKEND}products`)
+      .get(`${process.env.REACT_APP_BACKEND}products`,
+      {
+        withCredentials: true,
+      })
       .then((response) => {
         setProductList(response.data);
       });
@@ -31,6 +34,9 @@ const Cart = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+        },
+        {
+          withCredentials: true,
         })
         .then((response) => {
           setCartList(response.data);
@@ -73,6 +79,9 @@ const Cart = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+        },
+        {
+          withCredentials: true,
         })
         .then((response) => {
           axios
@@ -80,6 +89,9 @@ const Cart = () => {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
+            },
+            {
+              withCredentials: true,
             })
             .then((response) => {
               setCartList(response.data);

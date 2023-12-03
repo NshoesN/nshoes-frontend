@@ -17,7 +17,10 @@ const Detail = () => {
   const [mainImg, setMainImg] = useState("");
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND}products/${productId}`)
+      .get(`${process.env.REACT_APP_BACKEND}products/${productId}`,
+      {
+        withCredentials: true,
+      })
       .then((response) => {
         setProduct(response.data);
         setMainImg(response.data.images[0]);
@@ -52,6 +55,9 @@ const Detail = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+        },
+        {
+          withCredentials: true,
         })
         .then(() => {
           navigate("/cart");

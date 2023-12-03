@@ -24,11 +24,17 @@ function App() {
   const updateCartCount = useCallback(() => {
     if (token) {
       axios
-        .get(`${process.env.REACT_APP_BACKEND}cart`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        .get(
+          `${process.env.REACT_APP_BACKEND}cart`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        })
+          {
+            withCredentials: true,
+          }
+        )
         .then((response) => {
           let total = 0;
           Object.values(response.data).forEach((item) => {
