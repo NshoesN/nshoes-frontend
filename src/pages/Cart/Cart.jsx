@@ -19,9 +19,13 @@ const Cart = () => {
   useEffect(() => {
     const token = window.sessionStorage.getItem("token");
 
-    axios.get(`${process.env.REACT_APP_BACKEND}products`).then((response) => {
-      setProductList(response.data);
-    });
+    axios
+      .get(`${process.env.REACT_APP_BACKEND}products`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setProductList(response.data);
+      });
 
     if (token) {
       axios

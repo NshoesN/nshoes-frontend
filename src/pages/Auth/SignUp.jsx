@@ -26,28 +26,34 @@ function SignUp() {
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPasswdValue(newPassword);
-    
+
     if (passwdcheckValue === newPassword) {
       setSameCheck(true);
     } else {
       setSameCheck(false);
     }
-  };  
-  const toggle_submit = () => {
-    axios.post(`${process.env.REACT_APP_BACKEND}register`, {
-      "name": nameValue,
-      "email": emailValue,
-      "password": passwdValue
-    })
-    .then(response => {
-      navigate("/Success");
-    })
-    .catch(err => {
-      console.error(err);
-      window.alert('회원가입에 실패했습니다'); 
-    });
   };
-  
+  const toggle_submit = () => {
+    axios
+      .post(
+        `${process.env.REACT_APP_BACKEND}register`,
+        {
+          name: nameValue,
+          email: emailValue,
+          password: passwdValue,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        navigate("/Success");
+      })
+      .catch((err) => {
+        console.error(err);
+        window.alert("회원가입에 실패했습니다");
+      });
+  };
 
   return (
     <div className="AuthLayout">

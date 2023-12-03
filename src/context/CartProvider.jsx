@@ -9,15 +9,19 @@ const CartProviderComponent = ({ children }) => {
 
   const updateCartCount = useCallback(() => {
     if (isLoggedIn) {
-      axios.get(`${process.env.REACT_APP_BACKEND}cart`).then((response) => {
-        let total = 0;
-        Object.values(response.data).forEach((item) => {
-          item.forEach((item) => {
-            total += item.quantity;
+      axios
+        .get(`${process.env.REACT_APP_BACKEND}cart`, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          let total = 0;
+          Object.values(response.data).forEach((item) => {
+            item.forEach((item) => {
+              total += item.quantity;
+            });
+            setCartCount(total);
           });
-          setCartCount(total);
         });
-      });
     } else {
       let storageObject = {};
 
