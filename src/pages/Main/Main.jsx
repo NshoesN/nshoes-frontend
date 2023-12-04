@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 //style
 import '../../assets/styles/Main.scss'
 //images
@@ -6,6 +6,10 @@ import MainTop_1 from '../../assets/images/MainTop_1.png'
 import MainTop_2 from '../../assets/images/MainTop_2.webp'
 
 function Main(pre) {
+    const navigate = useNavigate();
+    const move = (target) => {
+        navigate(`/Detail/${target}`)
+    }
     return (
         <div className='MainContainer'>
             <div className="MainTop MainFrame">
@@ -14,8 +18,8 @@ function Main(pre) {
                     <h2>Nike Air Force 1 '07 Low White</h2>
                     <p>pure white beauty</p>
                     <div className="buttonbox">
-                        <button><Link to='/Detail/1'>Learn more</Link></button>
-                        <button><Link to='/Detail/1'>Add Cart</Link></button>
+                        <button onClick={() => move(1)}>Learn more</button>
+                        <button onClick={() => move(1)}>Add Cart</button>
                     </div>
                 </div>
             </div>
@@ -25,8 +29,8 @@ function Main(pre) {
                     <h2>Nike Air Force 1 '07 Low Black</h2>
                     <p>pure black beauty</p>
                     <div className="buttonbox">
-                        <button><Link to='/Detail/2'>Learn more</Link></button>
-                        <button><Link to='/Detail/2'>Add Cart</Link>t</button>
+                        <button onClick={() => move(2)}>Learn more</button>
+                        <button onClick={() => move(2)}>Add Cart</button>
                     </div>
                 </div>
             </div>

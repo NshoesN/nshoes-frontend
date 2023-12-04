@@ -82,6 +82,7 @@ const Detail = () => {
       navigate("/cart");
     }
   };
+  
 
   return (
     <div className="detail_bg">
@@ -120,9 +121,12 @@ const Detail = () => {
                 </button>
               </PC>
               <Mobile>
+                <div className="button_container">
                 <div className="button">
+                  <div className="bar"></div>
                   <button id="buy" disabled={!shoesSize}>Buy</button>
                   <button id="cart" onClick={addCart} disabled={!shoesSize}>Add to Cart</button>
+                </div>
                 </div>
               </Mobile>
             </div>
